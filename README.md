@@ -35,7 +35,7 @@ author: Walker Gusmão, walker at praiseweb.com.br.
     4. So you change the project name in nbjoomlaant.xml, in line 3.
     PS: the projectname is without "com_", or "mod_" or anything else and always lowercase.
 
-## HOW TO
+## USAGE
 
     * Build a extension:
     Right Click on the build.xml file, Run Target -> zipup and just install your zip file (nbproject/package/projectname.zip) on any Joomla Website.
