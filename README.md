@@ -32,8 +32,8 @@ author: Walker Gusmão, walker at praiseweb.com.br.
     In this directory find the file/connection you are using for your project and put your password on a new line as follows:
         password=XXX123YYY ; where XXX123YYY is your password
         This file must be secured, never add these credentials in your projects.
-    4. So you change the project name in nbjoomlaant.xml, in line 3.
-    PS: the projectname is without "com_", or "mod_" or anything else and always lowercase.
+    4. So you change the project name in build.xml, line 3.
+    PS: the project name is without "com_", or "mod_" or anything else and always lowercase.
 
 ## USAGE
 
