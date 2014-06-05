@@ -11,7 +11,6 @@ author: Walker Gusmão, walker at praiseweb.com.br.
     * Zips your component into a nbproject/package/projectname.zip file
     * FTPs your components files into the proper directories as long as remote.directory is set properly 
     * (You do that in your project configuration when you specify Remote)
-    * Copies the files to your local Joomla! installation for testing.    
 
 ## SHORT PROCESS
 
