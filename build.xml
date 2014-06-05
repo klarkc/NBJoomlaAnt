@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="automated-build-tasks" default="init" basedir=".">
+    <property file="nbproject/private/private.properties" />
+    <property file="nbproject/project.properties" />
+    <property file="${ftp.connections}/${remote.connection}.properties" />
+
+    <property name="src" location="./"/>
+    <property name="adminsrc" location="admin"/>
+    <property name="sitesrc" location="site"/>
+    <property name="build" location="nbproject/package"/>   
+    <property name="manifest"  value="${src}/${name}.xml" />
+    
+    <target name="init">
+        <tstamp/>
+        <echo message="Creating ${build} directory"/>
+        <mkdir dir="${build}"/>
+        <echo message="Creating ${adminsrc} directory"/>
+        <mkdir dir="${adminsrc}"/>
+        <echo message="Creating ${sitesrc} directory"/>
+        <mkdir dir="${sitesrc}"/>
+        <echo message="Name ${name} "/>
+        <echo message="Build ${build} "/>
+        <echo message="Src var:  ${src} "/>
+        <echo message="SiteSrc var:  ${sitesrc} "/>
+        <echo message="Admin var:  ${adminsrc} "/>
+        <echo message="Manifest:  ${manifest} "/>
+    </target>
+    <!-- run all the targets-->
+    <target name="all" depends="run-ftp,zipup">
+    </target>
+    <target name="run-ftp" description="Uploading files to the various places">
+        <!-- Create Directories -->
+        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${name}" />
+        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${name}" />
+        <!-- Copy Files -->
+        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${name}">
+            <fileset dir="${sitesrc}">
+                <exclude name="**/*.svn/"/>
+                <exclude name="**/*.git*/"/>
+                <exclude name="**/nbproject/**"/>
+                <exclude name="build.xml"/>
+            </fileset>
+        </ftp>
+        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${name}">
+            <fileset dir="${adminsrc}">
+                <exclude name="**/*.svn/"/>
+                <exclude name="**/*.git*/"/>
+                <exclude name="**/nbproject/**"/>
+                <exclude name="build.xml"/>
+            </fileset>
+        </ftp>
+    </target> 
+    <target name="zipup"
+            description="zips the archive" >
+        <zip destfile="${build}/${name}.zip">
+            <zipfileset dir="${src}" excludes="build.xml,**/*.git*/,**/.svn/,**/nbproject/**"/>
+        </zip>
+    </target>
+   
+</project>
