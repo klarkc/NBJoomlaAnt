@@ -38,6 +38,7 @@
     </target> 
     <target name="zipup"
             description="zips the archive" >
+        <mkdir dir="${build}"/>
         <zip destfile="${build}/${name}.zip">
             <zipfileset dir="${src}" excludes="build.xml,**/*.git*/,**/.svn/,**/nbproject/**"/>
         </zip>
