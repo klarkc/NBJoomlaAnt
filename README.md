@@ -27,22 +27,15 @@ author: Walker Gusmão, walker at praiseweb.com.br.
 
     1. Git Clone this project on Netbeans, Team -> Git -> Clone, put this url: https://github.com/klarkc/NBJoomlaAnt remeber to enable the "Search for netbeans projects" option.
     2. Right click in your project, go Properties -> Run Configuration, setup your ftp parameters.
-    3. In Netbeans 8.0 the RemoteConnections directory is at:
-        /home/user/.netbeans/8.0/config/Preferences/org/netbeans/modules/php/project/RemoteConnections
-    4. In that directory find the file/connection you are using for your project and put your password on a new line as follows:
+    3. In Netbeans 8.0 the RemoteConnections directory is at ~/.netbeans/8.0/config/Preferences/org/netbeans/modules/php/project/RemoteConnections, In this directory find the file/connection you are using for your project and put your password on a new line as follows:
         password=XXX123YYY ; where XXX123YYY is your password
         This file must be secured, never add these credentials in your projects.
-    5. So you place the following lines into your nbproject/private/private.properties file (this folder is hidden within Netbeans):
-        ftp.connections=${netbeans.user}\\config\\Preferences\\org\\netbeans\\modules\\php\\project\\RemoteConnections
-        name=projectname
-    PS: the projectname is without "com_", or "mod_" or anything else and always lowercase.
+    4. So you change the project name in nbjoomlaant.xml, in line 3, PS: the projectname is without "com_", or "mod_" or anything else and always lowercase.
 
 ## USAGE INSTRUCTIONS
 
-    * First, init your project, creating the needed folders and files. Right Click on the build.xml file, Run Target -> init
-    * When you are done, you can build a package: Right Click on the build.xml file, Run Target -> zipup and just install your zip file (nbproject/package/projectname.zip) on any Joomla Website.
-    * To update your files directly on the remote website, Right Click on the build.xml file, Run Target -> run-ftp
-
+    * Build a package: Right Click on the build.xml file, Run Target -> zipup and just install your zip file (nbproject/package/projectname.zip) on any Joomla Website.
+    * Update your files directly on the remote website: Right Click on the build.xml file, Run Target -> run-ftp
 
 ## HOW ADD FOLDERS AND FILES TO THE FTP PROCESS
     * Add your needed folders and files in run-ftp section of build.xml files, if you need further instructions go ahead: http://ant.apache.org/manual/Tasks/ftp.html

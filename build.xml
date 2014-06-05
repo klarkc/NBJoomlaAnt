@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="automated-build-tasks" default="init" basedir=".">
-    <property file="nbproject/private/private.properties" />
-    <property file="nbproject/project.properties" />
-    <property file="${ftp.connections}/${remote.connection}.properties" />
+<project name="nbjoomlaant" default="init" basedir=".">
+    <property file="nbproject\\private\\private.properties" />
+    <property file="nbproject\\project.properties" />
+    <property file="${netbeans.user}\\config\\Preferences\\org\\netbeans\\modules\\php\\project\\RemoteConnections\\${remote.connection}.properties" />
 
     <property name="src" location="./"/>
     <property name="adminsrc" location="admin"/>
@@ -11,21 +11,6 @@
     <property name="build" location="nbproject/package"/>   
     <property name="manifest"  value="${src}/${name}.xml" />
     
-    <target name="init">
-        <tstamp/>
-        <echo message="Creating ${build} directory"/>
-        <mkdir dir="${build}"/>
-        <echo message="Creating ${adminsrc} directory"/>
-        <mkdir dir="${adminsrc}"/>
-        <echo message="Creating ${sitesrc} directory"/>
-        <mkdir dir="${sitesrc}"/>
-        <echo message="Name ${name} "/>
-        <echo message="Build ${build} "/>
-        <echo message="Src var:  ${src} "/>
-        <echo message="SiteSrc var:  ${sitesrc} "/>
-        <echo message="Admin var:  ${adminsrc} "/>
-        <echo message="Manifest:  ${manifest} "/>
-    </target>
     <!-- run all the targets-->
     <target name="all" depends="run-ftp,zipup">
     </target>
