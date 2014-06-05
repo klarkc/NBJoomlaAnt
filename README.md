@@ -21,7 +21,7 @@ author: Walker Gusmão, walker at praiseweb.com.br.
 
 ## REQUERIMENTS
 
-    * You need to have Netbeans Ant Plugin installed, go Tools -> Plugins and install Ant plugin.
+    * You must have Netbeans Ant Plugin installed, go Tools -> Plugins and install Ant plugin.
 
 ## INSTALL INSTRUCTIONS
 
