@@ -9,17 +9,17 @@
     <property name="adminsrc" location="admin"/>
     <property name="sitesrc" location="site"/>
     <property name="build" location="nbproject/package"/>   
-    <property name="manifest"  value="${src}/${name}.xml" />
+    <property name="manifest"  value="${src}/${ant.project.name}.xml" />
     
     <!-- run all the targets-->
     <target name="all" depends="run-ftp,zipup">
     </target>
     <target name="run-ftp" description="Uploading files to the various places">
         <!-- Create Directories -->
-        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${name}" />
-        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${name}" />
+        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${ant.project.name}" />
+        <ftp action="mkdir" server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${ant.project.name}" />
         <!-- Copy Files -->
-        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${name}">
+        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/components/com_${ant.project.name}">
             <fileset dir="${sitesrc}">
                 <exclude name="**/*.svn/"/>
                 <exclude name="**/*.git*/"/>
@@ -27,7 +27,7 @@
                 <exclude name="build.xml"/>
             </fileset>
         </ftp>
-        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${name}">
+        <ftp server="${host}" userid="${user}" password="${password}" verbose="true" passive="true" remotedir="${remote.directory}/administrator/components/com_${ant.project.name}">
             <fileset dir="${adminsrc}">
                 <exclude name="**/*.svn/"/>
                 <exclude name="**/*.git*/"/>
@@ -39,7 +39,7 @@
     <target name="zipup"
             description="zips the archive" >
         <mkdir dir="${build}"/>
-        <zip destfile="${build}/${name}.zip">
+        <zip destfile="${build}/${ant.project.name}.zip">
             <zipfileset dir="${src}" excludes="build.xml,**/*.git*/,**/.svn/,**/nbproject/**"/>
         </zip>
     </target>
